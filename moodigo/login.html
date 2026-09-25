@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moodigo | Login</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#11161d;
+    --surface:#1a222c;
+    --border:#2c3844;
+    --text:#f2eee6;
+    --gold:#e2a63f;
+    --green:#5fa8a0;
+    --red:#c46a68;
+    --purple:#9081c9;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Space Grotesk',sans-serif;
+    overflow-x:hidden;
+}
+
+/* HEADER */
+.moodigo-header{
+    height:88px;
+    background:rgba(17,22,29,.94);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    display:flex;
+    align-items:center;
+    padding:0 6%;
+    position:relative;
+    z-index:10;
+    backdrop-filter:blur(16px);
+    box-shadow:0 5px 25px rgba(0,0,0,.20);
+}
+
+.moodigo-logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    text-decoration:none;
+}
+
+.moodigo-logo img{
+    width:62px;
+    height:70px;
+    object-fit:contain;
+    border-radius:10px;
+    display:block;
+}
+
+.moodigo-name{
+    font-size:27px;
+    font-weight:600;
+    letter-spacing:-.5px;
+    background:linear-gradient(90deg,#e2a63f,#5fa8a0 35%,#c46a68 68%,#9081c9);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+}
+
+.moodigo-nav{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.moodigo-nav a{
+    position:relative;
+    padding:12px 18px;
+    color:#aeb7c1;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+    border-radius:10px;
+    transition:.3s ease;
+}
+
+.moodigo-nav a:hover{
+    color:#fff;
+    background:rgba(255,255,255,.06);
+}
+
+.moodigo-nav a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    left:50%;
+    bottom:5px;
+    transform:translateX(-50%);
+    border-radius:5px;
+    background:linear-gradient(90deg,#e2a63f,#5fa8a0,#c46a68,#9081c9);
+    transition:.3s ease;
+}
+
+.moodigo-nav a:hover::after{
+    width:45%;
+}
+
+/* PAGE */
+.login-page{
+    min-height:calc(100vh - 88px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:55px 20px 70px;
+    position:relative;
+    overflow:hidden;
+}
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+}
+
+.circle.one{
+    width:280px;
+    height:280px;
+    left:-140px;
+    top:80px;
+    background:rgba(226,166,63,.09);
+}
+
+.circle.two{
+    width:320px;
+    height:320px;
+    right:-160px;
+    bottom:-70px;
+    background:rgba(95,168,160,.09);
+}
+
+.circle.three{
+    width:140px;
+    height:140px;
+    right:17%;
+    top:8%;
+    background:rgba(144,129,201,.06);
+}
+
+/* LOGIN CARD */
+.login-wrapper{
+    width:100%;
+    max-width:440px;
+    position:relative;
+    z-index:2;
+}
+
+.login-card{
+    background:linear-gradient(145deg,rgba(33,43,55,.98),rgba(26,34,44,.98));
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:40px 38px 35px;
+    box-shadow:0 25px 60px rgba(0,0,0,.28);
+    position:relative;
+    overflow:hidden;
+}
+
+.login-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:linear-gradient(90deg,#e2a63f,#5fa8a0,#c46a68,#9081c9);
+}
+
+.login-heading{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.small-title{
+    color:#d9a83b;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:9px;
+}
+
+.login-heading h1{
+    font-family:'Fraunces',serif;
+    font-size:38px;
+    font-weight:500;
+    color:#fff;
+    line-height:1.2;
+    margin-bottom:9px;
+}
+
+.login-heading p{
+    color:#c8ced5;
+    font-size:14px;
+    line-height:1.55;
+}
+
+/* FORM */
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    color:#e7eaf0;
+    font-size:13px;
+    font-weight:500;
+    margin-bottom:8px;
+}
+
+.input-wrap input{
+    width:100%;
+    height:49px;
+    padding:0 15px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    outline:none;
+    background:#151d26;
+    color:#fff;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:14px;
+    transition:.3s ease;
+}
+
+.input-wrap input::placeholder{
+    color:#727d89;
+}
+
+.input-wrap input:focus{
+    border-color:#5fa8a0;
+    box-shadow:0 0 0 3px rgba(95,168,160,.08);
+}
+
+.password-line{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+}
+
+.password-line label{
+    margin-bottom:0;
+}
+
+.forgot{
+    color:#d9a83b;
+    text-decoration:none;
+    font-size:12px;
+}
+
+.forgot:hover{
+    text-decoration:underline;
+}
+
+/* BUTTON */
+.login-button{
+    width:100%;
+    height:49px;
+    border:0;
+    border-radius:10px;
+    cursor:pointer;
+    color:#11161d;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:14px;
+    font-weight:600;
+    background:linear-gradient(90deg,#e2a63f,#5fa8a0,#c46a68,#9081c9);
+    transition:.25s ease;
+    margin-top:4px;
+}
+
+.login-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(95,168,160,.18);
+}
+
+/* SIGNUP */
+.signup-text{
+    text-align:center;
+    color:#9da7b2;
+    font-size:13px;
+    margin-top:21px;
+}
+
+.signup-text a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.signup-text a:hover{
+    color:#d9a83b;
+}
+
+.login-note{
+    text-align:center;
+    margin-top:18px;
+    color:#727d89;
+    font-size:11px;
+}
+
+.login-note span{
+    color:#d9a83b;
+}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+    .moodigo-header{
+        padding:0 20px;
+    }
+
+    .moodigo-nav a{
+        padding:10px;
+        font-size:13px;
+    }
+
+    .login-page{
+        padding:40px 18px 55px;
+    }
+}
+
+@media(max-width:560px){
+    .moodigo-header{
+        height:76px;
+    }
+
+    .moodigo-logo img{
+        width:50px;
+        height:55px;
+    }
+
+    .moodigo-name{
+        font-size:22px;
+    }
+
+    .moodigo-nav{
+        gap:2px;
+    }
+
+    .moodigo-nav a{
+        padding:8px 7px;
+        font-size:11px;
+    }
+
+    .login-card{
+        padding:32px 23px 29px;
+    }
+
+    .login-heading h1{
+        font-size:32px;
+    }
+}
+
+@media(max-width:430px){
+    .moodigo-name{
+        display:none;
+    }
+
+    .moodigo-logo img{
+        width:48px;
+        height:52px;
+    }
+
+    .moodigo-nav a{
+        padding:8px 5px;
+        font-size:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="moodigo-header">
+
+    <a href="index.html" class="moodigo-logo">
+
+        <!-- LOGO PATH: change this filename if you want to use another logo -->
+        <img src="logo.png" alt="Moodigo Logo">
+
+        <span class="moodigo-name">Moodigo</span>
+
+    </a>
+
+    <nav class="moodigo-nav">
+        <a href="website.html">Home</a>
+        <a href="explore.html">Explore</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="about.html">About</a>
+    </nav>
+
+</header>
+
+
+<main class="login-page">
+
+    <div class="circle one"></div>
+    <div class="circle two"></div>
+    <div class="circle three"></div>
+
+    <div class="login-wrapper">
+
+        <div class="login-card">
+
+            <div class="login-heading">
+
+                <div class="small-title">Welcome Back</div>
+
+                <h1>Welcome back to Moodigo.</h1>
+
+                <p>
+                    Your next journey is waiting.
+                    Let's find the right mood for it.
+                </p>
+
+            </div>
+
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label for="email">Email Address</label>
+
+                    <div class="input-wrap">
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <div class="password-line">
+                        <label for="password">Password</label>
+                    </div>
+
+                    <div class="input-wrap">
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+                    </div>
+
+                    <div class="forgot-bottom">
+                        <a href="forgot-password.html" class="forgot">Forgot Password?</a>
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="login-button">
+                    Log In →
+                </button>
+
+            </form>
+
+
+            <div class="signup-text">
+                Don't have an account?
+                <a href="signup.html">Create Account</a>
+            </div>
+
+        </div>
+
+
+        <div class="login-note">
+            Your mood. Your people. <span>Your journey.</span>
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    alert("Login submitted successfully!");
+
+});
+</script>
+
+</body>
+</html>

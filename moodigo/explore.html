@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore | Moodigo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;background:#11161d;color:#f7f3eb;font-family:"Space Grotesk",sans-serif}
+header{width:100%;padding:18px 6%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2c3844;background:#11161d}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand img{width:48px;height:48px;object-fit:contain}
+.brand-name{font-size:25px;font-weight:700;background:linear-gradient(90deg,#e2a63f,#5fa8a0,#c46a68,#9081c9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav{display:flex;align-items:center;gap:30px}
+nav a{position:relative;color:#f7f3eb;text-decoration:none;font-size:15px;font-weight:500;padding:8px 0}
+nav a:after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:linear-gradient(90deg,#e2a63f,#5fa8a0,#c46a68,#9081c9);transition:.25s}
+nav a:hover:after,nav a.active:after{width:100%}
+
+.hero{text-align:center;max-width:900px;margin:auto;padding:70px 20px 42px}
+.hero h1{font-family:"Fraunces",serif;font-size:clamp(42px,6vw,68px);line-height:1.05;margin-bottom:18px;background:linear-gradient(90deg,#e2a63f,#5fa8a0,#c46a68,#9081c9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#b9c0c8;font-size:18px;line-height:1.7;max-width:680px;margin:auto}
+
+.explore{width:min(1120px,88%);margin:auto;padding-bottom:85px}
+.section-title{font-family:"Fraunces",serif;font-size:32px;margin-bottom:20px}
+.moods{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:55px}
+.mood{border:1px solid #2c3844;background:#1a222c;border-radius:18px;padding:25px 20px;text-decoration:none;color:#f7f3eb;transition:.25s;cursor:pointer}
+.mood:hover{transform:translateY(-5px);border-color:#5fa8a0;background:#1d2731}
+.mood-icon{font-size:27px;margin-bottom:14px}
+.mood h3{font-family:"Fraunces",serif;font-size:23px;margin-bottom:7px}
+.mood p{color:#9fa9b3;font-size:14px;line-height:1.5}
+.adventure .mood-icon,.adventure h3{color:#e2a63f}
+.relaxed .mood-icon,.relaxed h3{color:#5fa8a0}
+.social .mood-icon,.social h3{color:#c46a68}
+.romantic .mood-icon,.romantic h3{color:#9081c9}
+
+.destinations{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.destination{background:#1a222c;border:1px solid #2c3844;border-radius:20px;overflow:hidden;transition:.25s}
+.destination:hover{transform:translateY(-5px);border-color:#5fa8a0}
+.destination-image{height:190px;background:linear-gradient(135deg,#263442,#1a222c);display:flex;align-items:center;justify-content:center;color:#7f8a95;font-size:15px}
+.destination-content{padding:23px}
+.tag{display:inline-block;padding:6px 11px;border-radius:20px;background:#212b37;color:#b9c0c8;font-size:12px;margin-bottom:13px}
+.destination h3{font-family:"Fraunces",serif;font-size:26px;margin-bottom:8px}
+.destination p{color:#aeb6bf;font-size:14px;line-height:1.6;margin-bottom:17px}
+.destination a{color:#f7f3eb;text-decoration:none;font-size:14px;font-weight:600}
+.destination a:hover{text-decoration:underline}
+
+.cta{text-align:center;padding:0 20px 90px}
+.cta h2{font-family:"Fraunces",serif;font-size:35px;margin-bottom:12px}
+.cta p{color:#aeb6bf;margin-bottom:25px}
+.cta a{display:inline-block;text-decoration:none;color:#11161d;font-weight:700;padding:13px 27px;border-radius:30px;background:linear-gradient(90deg,#e2a63f,#5fa8a0,#c46a68,#9081c9);transition:.2s}
+.cta a:hover{transform:translateY(-2px)}
+footer{border-top:1px solid #2c3844;text-align:center;padding:25px 20px;color:#89929d;font-size:13px}
+
+@media(max-width:900px){
+header{padding:16px 4%}
+nav{gap:18px}
+.moods{grid-template-columns:repeat(2,1fr)}
+.destinations{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+header{flex-direction:column;gap:15px}
+nav{flex-wrap:wrap;justify-content:center;gap:14px 20px}
+.hero{padding-top:50px}
+.hero p{font-size:16px}
+.moods,.destinations{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+<a href="index.html" class="brand">
+<img src="logo.png" alt="Moodigo Logo">
+<span class="brand-name">Moodigo</span>
+</a>
+<nav>
+<a href="website.html">Home</a>
+<a href="explore.html" class="active">Explore</a>
+<a href="how-it-works.html">How It Works</a>
+<a href="about.html">About</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Explore by Mood</h1>
+<p>Tell us how you feel and discover destinations that match the mood, vibe and kind of journey you are looking for.</p>
+</section>
+
+<main class="explore">
+<h2 class="section-title">What are you feeling?</h2>
+
+<div class="moods">
+<a class="mood adventure" href="#adventure">
+<div class="mood-icon">✦</div>
+<h3>Adventurous</h3>
+<p>For exciting experiences, exploration and unforgettable moments.</p>
+</a>
+<a class="mood relaxed" href="#relaxed">
+<div class="mood-icon">☁</div>
+<h3>Relaxed</h3>
+<p>For peaceful escapes, slow days and time to recharge.</p>
+</a>
+<a class="mood social" href="#social">
+<div class="mood-icon">♥</div>
+<h3>Social</h3>
+<p>For lively places, meeting people and sharing experiences.</p>
+</a>
+<a class="mood romantic" href="#romantic">
+<div class="mood-icon">✧</div>
+<h3>Romantic</h3>
+<p>For beautiful moments, memorable dates and special getaways.</p>
+</a>
+</div>
+
+<h2 class="section-title">Featured Destinations</h2>
+
+<div class="destinations">
+<article class="destination" id="adventure">
+<div class="destination-image">Destination Image</div>
+<div class="destination-content">
+<span class="tag">Adventurous</span>
+<h3>Manali</h3>
+<p>Mountain adventures, scenic landscapes and an escape into nature.</p>
+<a href="#">Explore Destination →</a>
+</div>
+</article>
+
+<article class="destination" id="relaxed">
+<div class="destination-image">Destination Image</div>
+<div class="destination-content">
+<span class="tag">Relaxed</span>
+<h3>Goa</h3>
+<p>Laid-back beaches, warm sunsets and a slower way to spend your days.</p>
+<a href="#">Explore Destination →</a>
+</div>
+</article>
+
+<article class="destination" id="social">
+<div class="destination-image">Destination Image</div>
+<div class="destination-content">
+<span class="tag">Social</span>
+<h3>Mumbai</h3>
+<p>A lively city filled with food, culture, nightlife and new experiences.</p>
+<a href="#">Explore Destination →</a>
+</div>
+</article>
+
+<article class="destination" id="romantic">
+<div class="destination-image">Destination Image</div>
+<div class="destination-content">
+<span class="tag">Romantic</span>
+<h3>Udaipur</h3>
+<p>Lake views, beautiful architecture and a setting made for memorable moments.</p>
+<a href="#">Explore Destination →</a>
+</div>
+</article>
+
+<article class="destination">
+<div class="destination-image">Destination Image</div>
+<div class="destination-content">
+<span class="tag">Relaxed</span>
+<h3>Kerala</h3>
+<p>Backwaters, greenery and peaceful experiences away from the rush.</p>
+<a href="#">Explore Destination →</a>
+</div>
+</article>
+
+<article class="destination">
+<div class="destination-image">Destination Image</div>
+<div class="destination-content">
+<span class="tag">Adventurous</span>
+<h3>Rishikesh</h3>
+<p>Outdoor activities, riverside views and an energetic escape into nature.</p>
+<a href="#">Explore Destination →</a>
+</div>
+</article>
+</div>
+</main>
+
+
+
+<footer>© 2026 Moodigo · Travel by Mood</footer>
+
+</body>
+</html>
